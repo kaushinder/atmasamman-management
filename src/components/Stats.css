@@ -1,0 +1,111 @@
+.stats-section {
+  padding: 0;
+  margin-top: -1px;
+  background: var(--secondary);
+  position: relative;
+  z-index: 2;
+}
+
+.stats-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e85d04, #ff8c42, #1d4ed8, #7c3aed);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat-card {
+  padding: 40px 32px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card:last-child { border-right: none; }
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.stat-card:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.stat-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.stat-icon {
+  font-size: 26px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-card {
+    padding: 28px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stat-card:nth-child(odd) {
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stat-card:nth-child(even) {
+    border-right: none;
+  }
+
+  .stat-value { font-size: 32px; }
+}
+
+@media (max-width: 400px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-card { border-right: none; }
+}
